@@ -1,0 +1,70 @@
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" class="w-full max-w-lg mx-auto mt-5 p-4 border rounded-lg shadow-lg bg-gray-50">
+  <div class="mb-4">
+    <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      [(ngModel)]="userObj.name"
+      #name="ngModel"
+      class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+      minlength="10"
+      maxlength="20"
+      pattern="^[a-zA-Z0-9 ]+$"
+      required
+    />
+    <div *ngIf="name.touched && name.invalid" class="text-red-600 text-sm mt-1">
+      <span *ngIf="name.errors?.['required']">Name is required.</span>
+      <span *ngIf="name.errors?.['minlength']">Min length of 10 characters is required.</span>
+      <span *ngIf="name.errors?.['pattern']">Special characters are not allowed.</span>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="mobileNo" class="block text-gray-700 font-medium mb-2">Mobile No.</label>
+    <input
+      type="text"
+      id="mobileNo"
+      name="mobileNo"
+      [(ngModel)]="userObj.mobileNo"
+      #mobileNo="ngModel"
+      class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+      minlength="10"
+      maxlength="10"
+      required
+    />
+    <div *ngIf="mobileNo.touched && mobileNo.invalid" class="text-red-600 text-sm mt-1">
+      <span *ngIf="mobileNo.errors?.['required']">Mobile No. is required.</span>
+      <span *ngIf="mobileNo.errors?.['minlength']">Mobile No. must be exactly 10 digits.</span>
+    </div>
+  </div>
+
+  <!-- Gender Field -->
+  <div class="mb-4">
+    <label for="gender" class="block text-gray-700 font-medium mb-2">Select Gender</label>
+    <select
+      id="gender"
+      name="gender"
+      [(ngModel)]="userObj.gender"
+      
+      class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+      required
+    >
+      <option value="">Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="others">Others</option>
+    </select>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="text-center">
+    <button
+      type="submit"
+      [disabled]="userForm.invalid"
+      class="px-6 py-2 bg-blue-500 text-white font-medium rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Save
+    </button>
+  </div>
+</form>

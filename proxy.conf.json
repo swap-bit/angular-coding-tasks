@@ -1,0 +1,9 @@
+{
+    "/api": {
+      "target": "https://picsum.photos",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
+  

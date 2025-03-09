@@ -1,0 +1,27 @@
+<div class="ml-[350px] w-[calc(100%-350px)] p-6">
+  <section class="content">
+    <ul class="mr-20 matches styled w-full" data-test-id="product-list">
+      <!-- Header Row -->
+      <li class="slide-up-fade-in product-details flex font-bold bg-gray-200 p-3 border-b border-gray-300">
+        <span class="w-1/4">TITLE</span>
+        <span class="w-1/4">CATEGORY</span>
+        <span class="w-1/4">GENDER</span>
+        <span class="w-1/4">BRAND</span>
+      </li>
+  
+      <!-- Product Rows -->
+      @for (product of products(); track product.id) {
+        <li class="product-details flex slide-up-fade-in p-3 border-b border-gray-200 transition-colors hover:bg-green-100">
+          <span class="w-1/4">{{ product.title }}</span>
+          <span class="w-1/4">{{ product.category }}</span>
+          <span class="w-1/4">{{ product.gender }}</span>
+          <span class="w-1/4">{{ product.brand }}</span>
+        </li>
+      }@empty {
+        <p class="text-center text-gray-500 font-medium mt-4 p-4 bg-gray-100 rounded-lg shadow-md">
+          No matching records found... try changing filter input.
+        </p>
+      }
+    </ul>
+  </section>
+</div>

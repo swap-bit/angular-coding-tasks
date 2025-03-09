@@ -1,0 +1,11 @@
+<div class="flex items-center justify-center h-screen bg-gray-100">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-[700px] flex gap-8">
+    <div class="flex flex-col gap-4 items-center justify-center">
+      <div class="w-24 h-16 flex items-center justify-center border border-gray-400 rounded-lg text-xl font-semibold">
+        {{ randomNo }}
+      </div>
+      <app-start [disableBtn]="disable" (generateRandomNoFlag)="generateRandomNo()" />
+    </div>
+    <app-random-no-table />
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="flex flex-col gap-4 p-4">
+  <!-- Sorting and Remove Duplicates Options -->
+  <div class="flex flex-wrap gap-4 items-center">
+    <select
+      name="sortByName"
+      id=""
+      class="block w-48 p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      (change)="sortByName($any($event.target).value)"
+    >
+      <option value="" selected>Sort By Name</option>
+      <option value="asc">ASC</option>
+      <option value="desc">DESC</option>
+    </select>
+    <select
+      name="sortByNo"
+      id=""
+      class="block w-48 p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      (change)="sortByNo($any($event.target).value)"
+    >
+      <option value="" selected>Sort By No</option>
+      <option value="asc">ASC</option>
+      <option value="desc">DESC</option>
+    </select>
+    <select
+      name="removeDuplicates"
+      id=""
+      class="block w-48 p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      (change)="removeDuplicate($any($event.target).value)"
+    >
+      <option value="" selected>Remove by</option>
+      <option value="name">Name</option>
+      <option value="no">No</option>
+    </select>
+  </div>
+
+  <!-- Data Table -->
+  <div class="overflow-x-auto">
+    <table class="min-w-full border border-gray-300 rounded-lg shadow-md">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="py-3 px-4 border border-gray-300 text-left text-gray-700 font-semibold uppercase">
+            Name
+          </th>
+          <th class="py-3 px-4 border border-gray-300 text-left text-gray-700 font-semibold uppercase">
+            No
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let item of data; let i = index"
+          [ngClass]="{ 'bg-gray-100': i % 2 === 0, 'bg-white': i % 2 !== 0 }"
+          class="hover:bg-blue-50 transition duration-200"
+        >
+          <td class="py-3 px-4 border border-gray-300">{{ item.name }}</td>
+          <td class="py-3 px-4 border border-gray-300">{{ item.no }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

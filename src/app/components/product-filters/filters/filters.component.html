@@ -1,0 +1,15 @@
+
+<ul class="flex flex-col list-none p-0 m-0 space-y-2">
+  <span class="text-lg font-semibold text-gray-700 border-b pb-2">
+    {{ this.filterType() === 'gender' ? 'Gender' : 'Category' }}
+  </span>
+
+  @for (filter of filterValues(); track $index) {
+    <li 
+      (click)="onFilterSelect(filter)"  
+      class="relative cursor-pointer px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-200 transition-all"
+      [ngClass]="{'border-r-4 border-green-500 font-bold text-green-700': selectedFilter() === filter}">
+      {{ filter }}
+    </li>
+  } 
+</ul>

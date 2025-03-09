@@ -1,0 +1,10 @@
+<div class="flex">
+    <section class="w-1/5 h-screen bg-gray-100 p-4 shadow-lg fixed top-15 left-0 overflow-y-auto">
+        <app-filters (filterEvent)="onFilter($event)" [filterType]="gender" [filterValues]="genders"></app-filters>
+        <app-filters (filterEvent)="onFilter($event)" [filterType]="category" [filterValues]="categories"></app-filters>
+    </section>
+
+    <div class="flex-1 p-10">
+        <app-product-list [products]="filteredProducts"></app-product-list>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<table class="min-w-full mb-3 border-collapse border border-gray-300 rounded-lg overflow-hidden shadow-lg">
+  <thead>
+    <tr class="bg-gray-200 text-gray-700 uppercase text-sm font-semibold">
+      <th class="py-3 px-4 border border-gray-300 text-left">Name</th>
+      <th class="py-3 px-4 border border-gray-300 text-left">Username</th>
+      <th class="py-3 px-4 border border-gray-300 text-left">Title</th>
+      <th class="py-3 px-4 border border-gray-300 text-left">Completed</th>
+    </tr>
+  </thead>
+  <tbody>
+    @if(loading) {
+      <div class="flex items-center justify-center mt-4">
+        <div class="flex items-center space-x-2 text-center">
+          <div class="w-4 h-4 rounded-full animate-spin border-2 border-blue-500 border-t-transparent"></div>
+          <p class="text-blue-500  font-medium">Loading Users...</p>
+        </div>
+      </div>      
+    } @else {
+      <tr 
+        *ngFor="let data of filteredData; let i = index" 
+        [ngClass]="{ 'bg-gray-100': i % 2 === 0, 'bg-white': i % 2 !== 0 }"
+        class="hover:bg-blue-50 transition duration-200"
+      >
+        <td class="py-3 px-4 border border-gray-300">{{ data.name }}</td>
+        <td class="py-3 px-4 border border-gray-300">{{ data.username }}</td>
+        <td class="py-3 px-4 border border-gray-300">{{ data.title }}</td>
+        <td class="py-3 px-4 border border-gray-300">
+          @if(data.completed) {
+            <span  class="px-3 py-1 text-sm font-semibold text-white bg-green-500 rounded-full">
+              Completed
+            </span>
+          } @else {
+            <span class="px-3 py-1 text-sm font-semibold text-white bg-red-500 rounded-full">
+              Not Completed
+            </span>
+          }
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+<app-paginate 
+  [currentPage]="currentPage" 
+  [itemsPerPage]="itemsPerPage"
+  [totalItems]="totalItems"
+  (pageChangeEvent)="onPageChange($event)"
+  (goToPageEvent)="goToPage($event)"
+  />

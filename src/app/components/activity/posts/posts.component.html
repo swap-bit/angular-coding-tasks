@@ -1,0 +1,32 @@
+<div class="flex">
+  <aside class="w-64 bg-gray-800 text-white p-4">
+    <h2 class="text-lg font-semibold mb-4">Posts</h2>
+    @if(loading) {
+      <div class="flex items-center justify-center mt-4">
+        <div class="flex items-center space-x-2">
+          <div class="w-4 h-4 rounded-full animate-spin border-2 border-blue-500 border-t-transparent"></div>
+          <p class="text-blue-500 font-medium">Loading posts...</p>
+        </div>
+      </div>      
+    } @else {
+    <ul class="space-y-2">
+      @for (post of posts; track $index) {
+      <li>
+        <button
+          [ngClass]="{'border-2 border-blue-300': postId === post.id}"
+          class="w-full text-left px-3 py-2 bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 transition"
+          (click)="onPostClick(post.id)">
+          {{ post.title }}
+        </button>
+      </li>
+      } @empty {
+      <p class="text-gray-400">No posts available.</p>
+      }
+    </ul>
+    }
+  </aside>
+  <div class="bg-blue-300 p-4  shadow-md">
+    <h2 class="text-lg font-semibold mb-4">Comments</h2>
+    <app-comments [postId]="postId" class="block" />
+  </div>
+</div>

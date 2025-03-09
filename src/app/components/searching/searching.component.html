@@ -1,0 +1,54 @@
+<div class="p-4 space-y-4">
+  <!-- Search Input -->
+  <p>
+    <input
+      type="text"
+      placeholder="Searching..."
+      #searchTerm
+      (input)="onSearch(searchTerm.value)"
+      class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </p>
+
+  <!-- Table -->
+  <div class="overflow-x-auto">
+    <table class="min-w-full border border-gray-300 rounded-lg shadow-md">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="py-3 px-4 border border-gray-300 text-left text-gray-700 font-semibold uppercase">
+            First Name
+          </th>
+          <th class="py-3 px-4 border border-gray-300 text-left text-gray-700 font-semibold uppercase">
+            Last Name
+          </th>
+          <th class="py-3 px-4 border border-gray-300 text-left text-gray-700 font-semibold uppercase">
+            Email
+          </th>
+          <th class="py-3 px-4 border border-gray-300 text-left text-gray-700 font-semibold uppercase">
+            Age
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let user of filteredUsers; let i = index"
+          [ngClass]="{ 'bg-gray-100': i % 2 === 0, 'bg-white': i % 2 !== 0 }"
+          class="hover:bg-blue-50 transition duration-200"
+        >
+          <td class="py-3 px-4 border border-gray-300">{{ user.firstName }}</td>
+          <td class="py-3 px-4 border border-gray-300">{{ user.lastName }}</td>
+          <td class="py-3 px-4 border border-gray-300">{{ user.email }}</td>
+          <td class="py-3 px-4 border border-gray-300">{{ user.age }}</td>
+        </tr>
+        <tr *ngIf="filteredUsers.length === 0">
+          <td
+            colspan="4"
+            class="py-3 px-4 text-center text-gray-500 bg-gray-50 border border-gray-300"
+          >
+            No user found..
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

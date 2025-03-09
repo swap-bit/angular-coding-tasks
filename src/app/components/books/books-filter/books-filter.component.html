@@ -1,0 +1,42 @@
+<div class="p-4 bg-gray-50 rounded shadow-md w-80 mx-auto">
+  <p class="mb-4 flex items-center justify-between">
+    <span class="font-semibold text-gray-700">Min value</span>
+    <input
+      type="number"
+      name="minValue"
+      [(ngModel)]="minValue"
+      class="border border-gray-300 rounded px-2 py-1 w-24 text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      placeholder="Min"
+    />
+  </p>
+
+  <p class="mb-4 flex items-center justify-between">
+    <span class="font-semibold text-gray-700">Max value</span>
+    <input
+      type="number"
+      [(ngModel)]="maxValue"
+      name="maxValue"
+      class="border border-gray-300 rounded px-2 py-1 w-24 text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      placeholder="Max"
+    />
+  </p>
+
+  <div class="flex items-center justify-evenly">
+    <button
+      [disabled]="!(minValue && maxValue)"
+      (click)="onFilter()"
+      class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600 focus:ring-2 focus:ring-blue-300 focus:outline-none"
+    >
+      Filter
+    </button>
+    <button
+      (click)="onReset()"
+      class="bg-gray-300 text-gray-700 px-4 py-2 rounded shadow hover:bg-gray-400 focus:ring-2 focus:ring-gray-300 focus:outline-none"
+    >
+      Reset
+    </button>
+  </div>
+  @if(errorMsg) {
+    <p class="text-red-500">{{ errorMsg }}</p>
+  }
+</div>

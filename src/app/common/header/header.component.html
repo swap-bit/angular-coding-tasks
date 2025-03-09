@@ -1,0 +1,39 @@
+<header class="bg-gray-800 text-white">
+  <div class="container mx-auto flex items-center justify-between py-4 px-6">
+    @if (showBackBtn) {
+      <button (click)="onBackBtn()" class="flex items-center text-white px-4 py-2 bg-blue-500 rounded-lg hover:bg-blue-600">
+        <!-- Heroicon for the arrow -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 mr-2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back
+      </button>
+    }
+    <!-- Logo -->
+    <div class="text-2xl font-bold">
+      <a routerLink="/" class="hover:text-gray-400">Angular Coding Problems</a>
+    </div>
+    <!-- Navigation Links -->
+    <nav class="hidden md:flex space-x-6">
+      <a routerLink="/about" class="hover:text-gray-400">About</a>
+      <a routerLink="comments" class="hover:text-gray-400">Comments</a>
+      <a routerLink="/contact" class="hover:text-gray-400">Contact</a>
+      <app-test-connection />
+    </nav>
+    <!-- Mobile Menu Button -->
+    <button class="md:hidden focus:outline-none" (click)="menuToggle()" id="menuToggle">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
+    </button>
+  </div>
+  <!-- Mobile Menu -->
+  <div class="md:hidden" #mobileMenu id="mobileMenu" style="display: none;">
+    <nav class="bg-gray-700 text-white space-y-2 py-4 px-6">
+      <a href="#" class="block hover:text-gray-400">Home</a>
+      <a href="#" class="block hover:text-gray-400">About</a>
+      <a href="#" class="block hover:text-gray-400">Services</a>
+      <a href="#" class="block hover:text-gray-400">Contact</a>
+    </nav>
+  </div>
+</header>

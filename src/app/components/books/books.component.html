@@ -1,0 +1,10 @@
+<div class="p-4 space-y-6">
+  <app-books-filter (filterValues)="applyFilter($event)" (resetEvent)="reset()"/>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+  @for (book of filteredBooks; track $index) {
+      <app-book-card  [book]="book" />
+  } @empty {
+    <p class="text-gray-400 text-center">No books found.</p>
+  }
+  </div>
+</div>

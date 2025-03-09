@@ -1,0 +1,9 @@
+<ul>
+  @for (contact of contacts(); track contact.id) {
+    <li>
+      <p>{{ contact.name }}</p>
+      <p>{{ contact.email }}</p>
+    </li>
+    <hr>
+  }
+</ul>

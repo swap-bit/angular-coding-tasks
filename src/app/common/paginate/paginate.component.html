@@ -1,0 +1,36 @@
+<div class="flex flex-col items-center space-y-4">
+  <ul class="flex space-x-2">
+    <li>
+      <button 
+      (click)="onPageChange('prev')"
+        [disabled]="currentPage() === 0" 
+        [ngClass]="{'cursor-not-allowed': currentPage() === 0 }" 
+
+        class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50">
+        Previous
+      </button>
+    </li>
+    @for (page of pages(); track $index) {
+      <li>
+        <button 
+          (click)="goToPage(page)" 
+          [class.bg-blue-500]="page === currentPage() + 1" 
+          [class.text-white]="page === currentPage() + 1" 
+          [class.bg-gray-200]="page !== currentPage() + 1" 
+          [class.text-gray-700]="page !== currentPage() + 1" 
+          class="px-3 py-1 rounded-md hover:bg-blue-400">
+          {{ page }}
+        </button>
+      </li>
+    }
+    <li>
+      <button 
+        (click)="onPageChange('next')" 
+        [disabled]="currentPage() === pages.length -1"
+        [ngClass]="{'cursor-not-allowed': currentPage() === pages.length -1}" 
+        class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50">
+        Next
+      </button>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,32 @@
+<table class="min-w-full bg-white border border-gray-300 shadow-md rounded-lg">
+  <thead>
+    <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+      <th class="py-3 px-6 text-left">Title</th>
+      <th class="py-3 px-6 text-left">Description</th>
+      <th class="py-3 px-6 text-center">Status</th>
+      <th class="py-3 px-6 text-center">Actions</th>
+
+    </tr>
+  </thead>
+  <tbody class="text-gray-700 text-sm font-light">
+    @for (todo of todos(); track todo.id) {
+      <tr class="border-b border-gray-200 hover:bg-gray-50">
+        <td class="py-3 px-6 text-left">{{ todo.title }}</td>
+        <td class="py-3 px-6 text-left">{{ todo.description }}</td>
+        <td class="py-3 px-6 text-center">
+          <span class="{{ todo.status === 'completed' ? 'bg-green-200 text-green-800' : 'bg-yellow-200 text-yellow-800' }} py-1 px-3 rounded-full text-xs">
+            {{ todo.status }}
+          </span>
+        </td>
+        <td class="py-3 px-6 text-center">
+          <button
+            (click)="onDelete(todo.id)"
+            class="bg-red-500 text-white py-1 px-3 rounded-md text-xs hover:bg-red-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
